@@ -41,7 +41,7 @@ export const useCartStore = defineStore('cart', () => {
      * Action: 从后端获取用户的完整购物车
      */
     async function fetchCartByAccount() {
-        const account = getAccountFromSession();
+        const account = await getAccountFromSession();
         if (!account?.accountId) {
             this.cartItems = [];
             return;

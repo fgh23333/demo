@@ -67,7 +67,7 @@ onMounted(() => {
 const handleLogout = () => {
     sessionStorage.removeItem('account');
     // 这里可以根据您的项目情况，跳转到登录页或首页
-    router.go('/'); // 简单地刷新页面
+    router.push('/'); // 简单地刷新页面
 };
 </script>
 

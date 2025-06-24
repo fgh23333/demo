@@ -18,8 +18,7 @@
       <!-- 查看全部评论 -->
       <div class="top-right">
         <div class="AllComment">
-          查看评论
-          <i class="el-icon-d-arrow-right"></i>
+        
         </div>
       </div>
 
