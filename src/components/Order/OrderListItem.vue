@@ -9,7 +9,7 @@
             <span>订单详情</span>
         </template>
         <template #right>
-            <el-button text type="primary">返回首页</el-button>
+            <el-button text type="primary" @click="router.push('/')">返回首页</el-button>
         </template>
     </topBar>
     <el-card class="order-list-item" shadow="hover">
@@ -31,11 +31,24 @@
         <div class="order-footer">
             <span class="order-time">{{ new Date(order.created).toLocaleString() }}</span>
             <div class="actions">
-                <el-button text bg>再来一单</el-button>
-                <el-button text bg type="primary">订单详情</el-button>
+                <el-button text bg type="primary" @click="show">订单详情</el-button>
             </div>
         </div>
     </el-card>
+    <el-dialog title="订单详情" width="50%" v-model="showDetails">
+        <div>
+            <p><strong>订单号:</strong> {{ order.order_id }}</p>
+            <p><strong>商家:</strong> {{ order.business?.business_name || '未知商家' }}</p>
+            <p><strong>商品列表:</strong></p>
+            <ul>
+                <li v-for="detail in order.details" :key="detail.goods.goods_id">
+                    {{ detail.goods.goods_name }} - ￥{{ detail.goods.goods_price }} x {{ detail.quantity }}
+                </li>
+            </ul>
+            <p><strong>总价:</strong> ￥{{ order.order_total }}</p>
+            <p><strong>下单时间:</strong> {{ new Date(order.created).toLocaleString() }}</p>
+        </div>
+    </el-dialog>
 </template>
 
 <script setup>
@@ -43,6 +56,7 @@ import { defineProps } from 'vue';
 import { useRouter } from 'vue-router';
 import topBar from '@/components/topBar.vue';
 import { ArrowLeft } from '@element-plus/icons-vue';
+import { ElCard, ElTag, ElButton, ElIcon, ElDialog } from 'element-plus';
 const router = useRouter();
 
 defineProps({
@@ -63,6 +77,14 @@ const getOrderStatusText = (state) => {
         default: return '未知状态';
     }
 }
+
+import { ref } from 'vue';
+const showDetails = ref(false);
+
+const show = () => {
+    // 显示订单详情
+    showDetails.value = true;
+};
 </script>
 
 <style lang="scss" scoped>

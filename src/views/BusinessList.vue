@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-import Footer from '../components/Footer.vue'
+import Footer from '@/components/Footer.vue'
 import { ref } from "vue"
 import { get } from '@/api';
 import { useRouter, useRoute } from "vue-router"

@@ -27,7 +27,7 @@ export const useOrderStore = defineStore('order', () => {
      * Action: 从后端API获取订单列表
      */
     async function fetchOrders() {
-        const accountId = getAccountId();
+        const accountId = await getAccountId();
         if (!accountId) {
             ElMessage.warning('请先登录以查看订单');
             return;

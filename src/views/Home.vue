@@ -21,15 +21,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- 商品的分类信息 动态数据 
-            {{ 插值表达式 }}只能将数据显示在标签中 <h1>{{变量名}}</h1> 
-             插值表达式无法将数据  赋给 标签的属性。
-             使用v-bind 指令完成标签属性的绑定（赋值）
-             v-bind:src="item.categoryCover"  v-bind后属性"item.categoryCover"不再是字符串，而是表达式
-             v-bind:src="item.categoryCover" 简写为    :src="item.categoryCover"
-             :key="不重复数据"  作用优化v-for循环显示渲染数据的效率
-        -->
         <ul class="category-ul">
             <span>...</span>
             <li v-for="item in categoryList" :key="item.categoryId" @click="toBusinessList(item.categoryId)">

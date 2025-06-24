@@ -27,7 +27,17 @@ const toHome = () => {
     router.push('/').catch(e => { });
 }
 const toCenter = () => {
-    router.push('/login').catch(e => { });
+    // 检查是否登录
+    const account = sessionStorage.getItem('account');
+    if (account) {
+        router.push('/profile').catch(e => { });
+        return;
+    } else {
+        // 如果未登录，跳转到登录页面
+        alert('请先登录');
+        router.push('/login').catch(e => { });
+        return;
+    }
 }
 const toCart = () => {
     router.push('/cart').catch(e => { });

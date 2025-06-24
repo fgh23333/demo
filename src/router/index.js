@@ -5,6 +5,8 @@ import Register from '../views/Register.vue'
 import BusinessList from '@/views/BusinessList.vue'
 import BusinessInfo from '@/views/BusinessInfo.vue'
 import AddressView from '@/views/AddressView.vue'
+import CartView from '@/views/CartView.vue'
+import OrderView from '@/views/OrderView.vue'
 
 const routes = [
   {
@@ -38,14 +40,19 @@ const routes = [
     component: AddressView
   },
   {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('@/views/ProfileView.vue') // 懒加载
+  },
+  {
     path: '/cart',
     name: 'cart',
-    component: () => import('@/views/CartView.vue') // 懒加载
+    component: CartView // 懒加载
   },
   {
     path: '/orderList',
     name: 'orderList',
-    component: () => import('@/views/OrderView.vue') // 懒加载
+    component: OrderView // 懒加载
   },
   {
     path: '/:catchAll(.*)', // 捕获所有未匹配的路由

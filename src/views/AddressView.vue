@@ -1,4 +1,12 @@
 <template>
+    <topBar>
+        <template #left>
+            <el-icon @click="router.back()">
+                <ArrowLeft />
+            </el-icon>
+        </template>
+        <template #middle>地址管理</template>
+    </topBar>
     <div class="address-container">
         <el-card>
             <template #header>
@@ -57,6 +65,11 @@
 import { ref, onMounted } from 'vue';
 import { useAddressStore } from '@/stores/address';
 import { Plus } from '@element-plus/icons-vue';
+import topBar from '@/components/topBar.vue';
+import { ArrowLeft } from '@element-plus/icons-vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const addressStore = useAddressStore();
 
