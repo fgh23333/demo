@@ -1,19 +1,49 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Home from '../views/Home.vue'
+import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
+import BusinessList from '@/views/BusinessList.vue'
+import BusinessInfo from '@/views/BusinessInfo.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: Home
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register
+  },
+  {
+    path: '/businessList',
+    name: 'businessList',
+    component: BusinessList
+  },
+  {
+    path: '/businessInfo',
+    name: 'businessInfo',
+    component: BusinessInfo
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: () => import('@/views/CartView.vue') // 懒加载
+  },
+  {
+    path: '/orderList',
+    name: 'orderList',
+    component: () => import('@/views/OrderView.vue') // 懒加载
+  },
+  {
+    path: '/:catchAll(.*)', // 捕获所有未匹配的路由
+    redirect: '/login'
   }
 ]
 
