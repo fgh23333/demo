@@ -4,6 +4,7 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import BusinessList from '@/views/BusinessList.vue'
 import BusinessInfo from '@/views/BusinessInfo.vue'
+import AddressView from '@/views/AddressView.vue'
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/businessInfo',
     name: 'businessInfo',
     component: BusinessInfo
+  },
+  {
+    path: '/addresses',
+    name: 'Addresses',
+    component: AddressView
   },
   {
     path: '/cart',

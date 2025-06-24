@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { ElMessage } from 'element-plus';
 
 // 您的Hono后端API地址
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'https://hono.635262140.xyz';
 
 export const useOrderStore = defineStore('order', () => {
     // State: 存储订单列表和加载状态

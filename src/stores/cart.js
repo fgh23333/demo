@@ -2,6 +2,8 @@ import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import { get, post } from '@/api/index.js'; // 确保路径正确
 import { ElMessage } from 'element-plus';
+import { useCartStore } from './cart';
+import { persist } from 'pinia-plugin-persistedstate';
 
 /**
  * @description 从 sessionStorage 安全地获取和解析 account 对象
@@ -152,3 +154,13 @@ export const useCartStore = defineStore('cart', () => {
         removeItem,
     };
 });
+
+useCartStore.persist = {
+    enabled: true,
+    strategies: [
+        {
+            key: 'cart',
+            storage: sessionStorage,
+        },
+    ],
+};
