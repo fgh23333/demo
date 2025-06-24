@@ -1,4 +1,11 @@
 <template>
+    <topBar>
+    <template #left>
+      <el-icon @click="router.go(-1)"><ArrowLeft /></el-icon>
+    </template>
+    <template #middle>个人中心</template>
+    <template #right></template>
+    </topBar>
   <div class="profile-container">
     <el-card class="profile-card">
       <el-row :gutter="20" align="middle">
@@ -44,6 +51,8 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { Tickets, Location, ShoppingCartFull, Star } from '@element-plus/icons-vue';
+import topBar from '@/components/topBar.vue';
+import { ArrowLeft } from '@element-plus/icons-vue';
 
 const account = ref(null);
 const router = useRouter();
