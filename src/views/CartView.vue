@@ -35,7 +35,7 @@
                 </div>
                 <div class="checkout-section">
                     <span class="total-text">合计：<span class="total-price">￥{{ cartStore.totalPrice }}</span></span>
-                    <el-button type="primary" size="large" round class="checkout-btn">去结算</el-button>
+                    <el-button type="primary" size="large" round class="checkout-btn" @click="checkout">去结算</el-button>
                 </div>
             </div>
         </el-card>
@@ -75,6 +75,18 @@ const groupedCart = computed(() => {
 onMounted(() => {
     cartStore.fetchCartByAccount();
 });
+
+const checkout = () => {
+    if (cartStore.totalItems === 0) {
+        return;
+    }
+    cartStore.cartItems.forEach(item => {
+        cartStore.removeItem(item.goods.goodsId);
+    });
+    // 跳转到结算页面
+    alert('结算成功')
+    router.push('/');
+};
 </script>
 
 <style lang="scss" scoped>
